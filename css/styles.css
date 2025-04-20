@@ -831,7 +831,7 @@ h3 {
   line-height: 1.8;
 }
 
-.contents-item p:last-child:hover {
+.contents-item p:last-child:not(p):hover {
   cursor: pointer;
 }
 
@@ -861,4 +861,18 @@ h2:nth-of-type(1) {
   background-clip: text;
   background-color: #ff3cac;
   background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
+}
+
+.blog .part-1 p::selection,
+.part-2 p::selection,
+.part-3 p::selection,
+.part-4 p::selection,
+.part-5 p::selection,
+.conclusion p::selection {
+  color: rgb(255, 0, 0);
+  background-color: rgba(242, 242, 32, 0.572);
+}
+
+.reply {
+  cursor: pointer;
 }
