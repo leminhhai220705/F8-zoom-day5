@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Post</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="blog" style="background-color: #ffffff">
+    <div class="part-1">
+      <h1 class="blog-title">The Best CSS One-Liner to Improve Performance in 2025</h1>
+      <div class="author-toolsbar">
+        <div class="author">
+          <img class="avatar" src="../images/avatar-blog.jpeg" alt="avatar_author" />
+
+          <div class="author-name">
+            <a
+              style="height: 10px"
+              target="_blank"
+              class="name"
+              href="https://medium.com/@karstenbiedermann"
+              >Karsten Biedermann
+            </a>
+            <p class="time-read">5 min read</p>
+            <time class="time-compose" datetime="2025-04-16T20:30">4 days ago</time>
+          </div>
+        </div>
+        <div class="toolsbar">
+          <div class="hand-clapping">
+            <i class="fa-solid fa-hands-clapping"></i>
+            <p>169</p>
+          </div>
+          <div class="comment">
+            <i class="fa-solid fa-comment"></i>
+            <p>4</p>
+          </div>
+
+          <div class="save">
+            <i class="fa-regular fa-bookmark"></i>
+          </div>
+          <div class="listen">
+            <i class="fa-solid fa-play"></i>
+          </div>
+          <div class="share">
+            <i class="fa-solid fa-up-right-from-square"></i>
+          </div>
+          <div class="threedots-icon">
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+        </div>
+      </div>
+      <div class="paragraph">
+        <p class="para-1">
+          As CSS continues to evolve in 2025, there’s a powerful one-liner that can dramatically
+          improve layout performance:
+          <code style="font-weight: bold; font-size: 14px" class="language-markup"
+            >contain-intrinsic-size</code
+          >. This property, when paired with
+          <code style="font-size: 14px" class="language-markup">contain</code>, offers a simple but
+          effective way to optimize rendering performance, particularly for dynamic content and
+          complex layouts. In this article, we'll explore how
+          <code style="font-size: 14px" class="language-markup">contain-intrinsic-size</code> works,
+          its practical applications, and how it can be a game-changer for experienced developers.
+        </p>
+      </div>
+    </div>
+
+    <figure class="cssintrinsic-image">
+      <img src="../images/cssintrinsic.webp" alt="contain-intrinsic-size" />
+      <figcaption class="caption">
+        Want to see more and explore in-depth examples? Check out my project, CSSToday:
+        <a target="_blank" href="https://csstoday.dev/">csstoday.dev</a>
+      </figcaption>
+    </figure>
+
+    <p class="three-dots">...</p>
+
+    <div class="part-2">
+      <div class="define">
+        <h2>
+          What is
+          <code style="font-size: 16px" class="language-markup">contain-intrinsic-size</code>?
+        </h2>
+        <p>
+          The
+          <code style="font-size: 14px" class="language-markup">contain-intrinsic-size</code>
+          property in CSS is used in conjunction with the
+          <code style="font-size: 14px" class="language-markup">contain</code> property to define
+          the intrinsic size of an element before it is fully rendered. This is particularly useful
+          when you need to control the size of an element that will later be dynamically sized based
+          on its content. It helps prevent unnecessary layout recalculations (reflows) and repaints,
+          making it a crucial tool for performance optimization.
+        </p>
+      </div>
+
+      <div class="basic-syntax">
+        <pre><code class="language-css">element {
+    contain: layout;
+    contain-intrinsic-size: 200px; /* Set a temporary size */
+}</code></pre>
+
+        <p>
+          In this example, the element is initially given a size of 200px while it waits for its
+          final content to be rendered. Once the content is available, the size will be adjusted
+          accordingly.
+        </p>
+      </div>
+
+      <div class="intrinsic-work">
+        <h2>
+          How
+          <code style="font-size: 14px" class="language-markup">contain-intrinsic-size</code> works
+        </h2>
+        <div class="temporary-placeholder">
+          <h3>1. Temporary placeholder size</h3>
+          <p>
+            The primary use case of contain-intrinsic-size is to provide a temporary placeholder
+            size for elements that will later be resized based on their content or dynamic
+            calculations. This placeholder helps the browser handle layout changes efficiently
+            without triggering unnecessary reflows.
+          </p>
+
+          <img src="../images/temporary_placeholder.webp" alt="temporary_placeholder_size" />
+          <figcaption>© Karsten Biedermann</figcaption>
+
+          <p class="example">Example:</p>
+
+          <pre
+            style="margin-top: 40px"
+          ><code style="font-size: 14px; " class="language-css">.container {
+    contain: layout;
+    contain-intrinsic-size: 300px;
+}</code></pre>
+
+          <p>
+            In this example, .container will initially be displayed with a size of 300px, even if
+            its content eventually has a different size. This is particularly helpful when the size
+            of the container needs to be calculated dynamically, and a predefined size helps
+            stabilize the layout.
+          </p>
+        </div>
+      </div>
+
+      <div class="layout-shift">
+        <h3>2. Preventing layout shifts</h3>
+        <p>
+          One common issue in web design is layout shifting, where the size and position of elements
+          change during the page load. By using contain-intrinsic-size, you can prevent the browser
+          from recalculating the layout unnecessarily, leading to a more stable layout, especially
+          when loading content asynchronously, images, or dynamically generated components.
+        </p>
+
+        <p class="example">Example:</p>
+
+        <pre style="margin-top: 40px"><code style="font-size: 14px; " class="language-css">.card {
+    contain: layout;
+    contain-intrinsic-size: 250px;
+}</code></pre>
+
+        <p>
+          This ensures that the .card component initially appears with a predefined size and only
+          adjusts once the actual content is available. This technique is particularly valuable for
+          lazy loading or asynchronous content loading, as it maintains a stable layout before the
+          final data is fully rendered.
+        </p>
+      </div>
+
+      <div class="responsive-design">
+        <h3>3. Responsive design flexibility</h3>
+        <p>
+          In modern responsive designs, it’s essential to have containers that adjust to different
+          screen sizes. contain-intrinsic-size can be effectively used to define the size of a
+          container relative to the layout of the parent element or the viewport.
+        </p>
+        <p class="example">Example:</p>
+        <pre><code class="language-css">.responsive-container {
+    contain: layout;
+    contain-intrinsic-size: 50vw;
+}</code></pre>
+        <p>
+          In this case, the .responsive-container takes up 50% of the viewport width. This technique
+          can be used to create fluid layouts that work well with dynamic content or images that
+          need to adjust to the container's size.
+        </p>
+      </div>
+    </div>
+
+    <div class="part-3">
+      <h2>
+        Performance benefits of
+        <code style="font-size: 14px" class="language-markup">contain-intrinsic-size</code>
+      </h2>
+      <p>
+        The main benefits of using contain-intrinsic-size lie in performance optimization and the
+        prevention of layout recalculations. In large, complex layouts or on resource-constrained
+        devices, this technique can significantly reduce rendering costs and page load times.
+      </p>
+
+      <img width="100%" src="../images/performance_benefit.webp" alt="performance_benefit" />
+      <figcaption>© Karsten Biedermann</figcaption>
+    </div>
+
+    <div class="part-4">
+      <h2>Avoiding reflow and repaint</h2>
+      <p>
+        By using contain, an element is treated in its own isolated layout environment, meaning that
+        changes to this element won’t affect adjacent layouts. This is crucial for performance
+        because the browser only needs to recalculate the layout when changes are made to the
+        contents inside the element.
+      </p>
+    </div>
+
+    <div class="part-5">
+      <h2>Real-world use cases</h2>
+      <div class="example-1">
+        <h3>Example 1: Optimizing a gallery component</h3>
+        <p>
+          Suppose you have a gallery component that contains images, and the size of the images is
+          not known upfront. Using contain-intrinsic-size ensures that the container always has a
+          predefined size even before the images are fully loaded:
+        </p>
+        <pre
+          style="margin-top: 50px"
+        ><code style="font-size: 14px;" class="lang-css">.gallery-item {
+      contain: layout;
+      contain-intrinsic-size: 300px;
+      /* Additional styling for the image */
+  }</code></pre>
+      </div>
+
+      <div class="example-2">
+        <h3>Example 2: Lazy loading images</h3>
+        <p>
+          In a lazy-loaded application, you can use contain-intrinsic-size to define the size of the
+          container before the image is fully loaded:
+        </p>
+
+        <pre
+          style="margin-top: 50px"
+        ><code style="font-size: 14px;" class="lang-css">.lazy-image-container {
+    contain: layout;
+    contain-intrinsic-size: 400px;
+}
+</code></pre>
+      </div>
+
+      <div class="example-3">
+        <h3>Example 3: Grid layout usage</h3>
+        <p>
+          In a grid layout where the size of cells depends on their content, contain-intrinsic-size
+          ensures a consistent layout even before the content is available:
+        </p>
+
+        <pre style="font-size: 14px; margin-top: 40px"><code class="lang-css">.grid-item {
+    contain: layout;
+    contain-intrinsic-size: 100px;
+    /* Further layout options */
+}
+</code></pre>
+      </div>
+    </div>
+
+    <div class="conclusion">
+      <h2>Conclusion</h2>
+      <p>
+        contain-intrinsic-size is a powerful and simple tool for developers who want to optimize the
+        performance of their web applications. By providing a temporary size for elements before
+        their final content is rendered, this property helps avoid unnecessary reflows and repaints,
+        leading to a more stable and efficient layout. It’s particularly valuable for dynamic
+        content, lazy loading, and responsive design, making it an essential part of modern CSS
+        development.
+      </p>
+
+      <p>
+        This one-liner can drastically improve the user experience on your site, ensuring fast and
+        smooth page loads without sacrificing performance or layout stability. Embrace this property
+        in 2025, and take your CSS to the next level!
+      </p>
+    </div>
+
+    <p class="three-dots">...</p>
+
+    <figure class="cssintrinsic-image">
+      <figcaption class="caption">
+        Want to see more and explore in-depth examples? Check out my project, CSSToday:
+        <a target="_blank" href="https://csstoday.dev/">csstoday.dev</a>
+      </figcaption>
+    </figure>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+
+    <div style="height: 2px; background-color: #cccccc33"></div>
+
+    <div class="response">
+      <h2>Responses (4)</h2>
+      <div class="comment-contents">
+        <div class="contents">
+          <div class="contents-item">
+            <div class="user-item">
+              <img src="../images/avatar-blog.jpeg" alt="avatar" />
+              <div class="user-info">
+                <a target="_blank" href="https://medium.com/@amirali.techforge">Amir Ali</a>
+                <p>he/she</p>
+                <time class="time-comment" datetime="">1 day ago</time>
+              </div>
+            </div>
+            <div class="other-3dots" style="font-size: 3rem" class="user-item">...</div>
+          </div>
+          <div style="font-size: 1.3rem" class="contents-item">
+            <p>Thanks for sharing</p>
+          </div>
+          <div class="contents-item">
+            <i class="fa-solid fa-hands-clapping"></i>
+            <i class="fa-solid fa-comment"></i>
+            <p>Reply</p>
+          </div>
+        </div>
+
+        <div class="contents">
+          <div class="contents-item">
+            <div class="user-item">
+              <img src="../images/avatar-blog.jpeg" alt="" />
+              <div class="user-info">
+                <a target="_blank" href="https://medium.com/@tiagovelho">Tiago Velhoi</a>
+                <p>he/she</p>
+                <time class="time-comment" datetime="">1 day ago</time>
+              </div>
+            </div>
+            <div class="other-3dots" style="font-size: 3rem" class="user-item">...</div>
+          </div>
+          <div style="font-size: 1.3rem" class="contents-item">
+            <p>
+              This looks cool if your components don't scale up and down with viewport size. On the
+              other hand, the skeleton type component might be better for most cases since it gives
+              the user feedback that component is not fully rendered yet
+            </p>
+          </div>
+          <div class="contents-item">
+            <i class="fa-solid fa-hands-clapping"></i>
+            <i class="fa-solid fa-comment"></i>
+            <p>Reply</p>
+          </div>
+        </div>
+
+        <div class="contents">
+          <div class="contents-item">
+            <div class="user-item">
+              <img src="../images/avatar-blog.jpeg" alt="" />
+              <div class="user-info">
+                <a href="https://medium.com/@iver.torrez">Iver Torrez</a>
+                <p></p>
+                <time class="time-comment" datetime="">2 days ago</time>
+              </div>
+            </div>
+            <div class="other-3dots" style="font-size: 3rem" class="user-item">...</div>
+          </div>
+          <div style="font-size: 1.3rem" class="contents-item">
+            <p>
+              I am a long time web developer - yet - I don’t understand the value of this technique.
+              What do you mean exactly by “consistent”? Why is that important? In what way does this
+              impact performance? I think you need to explain the inner details in a great deal more
+              depth.
+            </p>
+          </div>
+          <div class="contents-item">
+            <i class="fa-solid fa-hands-clapping"></i>
+            <i class="fa-solid fa-comment"></i>
+            <p>Reply</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
