@@ -134,13 +134,13 @@ a {
 
 .list-item {
   width: 158.5px;
+  transform: translate(951.3px);
 }
 
 .item {
   border: 0.5px solid #000;
   padding: 28px;
   background: #ddd;
-  transform: translate(951.3px);
 }
 
 /* Ex2:  */
